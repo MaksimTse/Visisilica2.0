@@ -20,17 +20,15 @@ def new():
     global guesses
     global mis
     global word_list
-    
-    tahvel = Canvas(mang, width=300, height=300)
-    tahvel.create_image(2, 2, image=image_list[mis], anchor=NW)
-    tahvel.grid(row=0, column=1)
-
-    mis_lbl.config(text=f'Vead: {mis}/{max_mis}',fg='green')
-
     #Tühjendage mängu muutujad
     word = ''
     guesses = ''
     mis = 0
+    mis_lbl.config(text=f'Vead: {mis}/{max_mis}',fg='green')
+
+    tahvel = Canvas(mang, width=300, height=300)
+    tahvel.create_image(2, 2, image=image_list[mis], anchor=NW)
+    tahvel.grid(row=0, column=1)
     
     word_list = [a, b, c]
     word = random.choice(random.choice(word_list))
@@ -77,7 +75,6 @@ def check_guess():
         #Kontrollige, kas mängija on võitnud
         if '_' not in display_word:
             result_lbl.config(text='Palju õnne! Sa arvasid sõna.',font='Arial 12')
-            mis = 0
             mis_lbl.config(text=f'Vead: {mis}/{max_mis}',fg='green')
             tahvel = Canvas(mang, width=300, height=300)
             tahvel.create_image(2, 2, image=image_list[mis], anchor=NW)
